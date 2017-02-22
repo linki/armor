@@ -83,7 +83,7 @@ func (h *HTTP) StartTLS() error {
 		for host := range a.Hosts {
 			hosts = append(hosts, host)
 		}
-		e.AutoTLSManager.HostPolicy = autocert.HostWhitelist(hosts...) // Added security
+		// e.AutoTLSManager.HostPolicy = autocert.HostWhitelist(hosts...) // Added security
 		home, err := homedir.Dir()
 		if err != nil {
 			return err
