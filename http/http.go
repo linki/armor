@@ -45,7 +45,10 @@ func Init(a *armor.Armor) (h *HTTP) {
 		res := c.Response()
 		host := a.Hosts[req.Host]
 		if host == nil {
-			return echo.ErrNotFound
+			host = a.Hosts["*"]
+			if host == nil {
+				return echo.ErrNotFound
+			}
 		}
 		host.Echo.ServeHTTP(res, req)
 		return
